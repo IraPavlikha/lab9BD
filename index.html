@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Книжки{% endblock %}
+{% block content %}
+    <div class="bg-white p-6 rounded-lg shadow-md">
+        <h1 class="text-2xl font-bold mb-4">Книжки</h1>
+        <a href="/books/add" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Додати книгу</a>
+        <ul class="mt-4">
+            {% for book in books %}
+                <li class="border-b py-2">
+                    <strong>{{ book.title }}</strong> by {{ book.author }}
+                    <a href="/books/edit/{{ book._id }}" class="text-blue-500 hover:text-blue-700">Редагувати</a>
+                    <a href="/books/delete/{{ book._id }}" class="text-red-500 hover:text-red-700" onclick="return confirm('Ви впевнені?')">Видалити</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

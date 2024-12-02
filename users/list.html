@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Список користувачів{% endblock %}
+{% block content %}
+    <div class="bg-white p-6 rounded-lg shadow-md">
+        <h1 class="text-2xl font-bold mb-4">Список користувачів</h1>
+        <a href="{{ url_for('user_add') }}" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mb-4 inline-block">Додати користувача</a>
+        <table class="min-w-full border-collapse table-auto">
+            <thead>
+                <tr>
+                    <th class="py-2 px-4 border-b text-left">Ім'я</th>
+                    <th class="py-2 px-4 border-b text-left">Email</th>
+                    <th class="py-2 px-4 border-b text-left">Роль</th>
+                    <th class="py-2 px-4 border-b text-left">Дії</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td class="py-2 px-4 border-b">{{ user.name }}</td>
+                        <td class="py-2 px-4 border-b">{{ user.email }}</td>
+                        <td class="py-2 px-4 border-b">{{ user.role }}</td>
+                        <td class="py-2 px-4 border-b">
+                            <a href="{{ url_for('user_edit', user_id=user._id) }}" class="text-blue-500 hover:underline">Редагувати</a> |
+                            <a href="{{ url_for('user_delete', user_id=user._id) }}" class="text-red-500 hover:underline" onclick="return confirm('Ви впевнені, що хочете видалити цього користувача?');">Видалити</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Редагувати книгу{% endblock %}
+{% block content %}
+    <div class="bg-white p-6 rounded-lg shadow-md">
+        <h1 class="text-2xl font-bold mb-4">Редагувати книгу</h1>
+        <form method="POST">
+            <div class="mb-4">
+                <label for="title" class="block text-gray-700">Назва книги</label>
+                <input type="text" id="title" name="title" class="w-full p-2 border border-gray-300 rounded" value="{{ book.title }}" required>
+            </div>
+            <div class="mb-4">
+                <label for="author" class="block text-gray-700">Автор</label>
+                <input type="text" id="author" name="author" class="w-full p-2 border border-gray-300 rounded" value="{{ book.author }}" required>
+            </div>
+            <div class="mb-4">
+                <label for="description" class="block text-gray-700">Опис</label>
+                <textarea id="description" name="description" class="w-full p-2 border border-gray-300 rounded" required>{{ book.description }}</textarea>
+            </div>
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Оновити книгу</button>
+        </form>
+    </div>
+{% endblock %}

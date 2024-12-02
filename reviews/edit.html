@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Редагувати відгук{% endblock %}
+{% block content %}
+    <div class="bg-white p-6 rounded-lg shadow-md">
+        <h1 class="text-2xl font-bold mb-4">Редагувати відгук</h1>
+        <form method="POST">
+            <div class="mb-4">
+                <label for="review_text" class="block text-gray-700">Відгук</label>
+                <textarea id="review_text" name="review_text" class="w-full p-2 border border-gray-300 rounded" required>{{ review.review_text }}</textarea>
+            </div>
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Оновити відгук</button>
+        </form>
+    </div>
+{% endblock %}

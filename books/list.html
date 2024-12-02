@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Список книг{% endblock %}
+{% block content %}
+    <div class="bg-white p-6 rounded-lg shadow-md">
+        <h1 class="text-2xl font-bold mb-4">Список книг</h1>
+        <a href="{{ url_for('book_add') }}" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mb-4 inline-block">Додати книгу</a>
+        <table class="min-w-full border-collapse table-auto">
+            <thead>
+                <tr>
+                    <th class="py-2 px-4 border-b text-left">Назва</th>
+                    <th class="py-2 px-4 border-b text-left">Автор</th>
+                    <th class="py-2 px-4 border-b text-left">Жанр</th>
+                    <th class="py-2 px-4 border-b text-left">Рейтинг</th>
+                    <th class="py-2 px-4 border-b text-left">Дата додавання</th>
+                    <th class="py-2 px-4 border-b text-left">Дії</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for book in books %}
+                    <tr>
+                        <td class="py-2 px-4 border-b">{{ book.title }}</td>
+                        <td class="py-2 px-4 border-b">{{ book.author }}</td>
+                        <td class="py-2 px-4 border-b">{{ book.genre }}</td>
+                        <td class="py-2 px-4 border-b">{{ book.rating }}</td>
+                        <td class="py-2 px-4 border-b">{{ book.date_added }}</td>
+                        <td class="py-2 px-4 border-b">
+                            <a href="{{ url_for('book_edit', book_id=book._id) }}" class="text-blue-500 hover:underline">Редагувати</a> |
+                            <a href="{{ url_for('book_delete', book_id=book._id) }}" class="text-red-500 hover:underline" onclick="return confirm('Ви впевнені, що хочете видалити цю книгу?');">Видалити</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

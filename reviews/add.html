@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Додати відгук{% endblock %}
+{% block content %}
+    <div class="bg-white p-6 rounded-lg shadow-md">
+        <h1 class="text-2xl font-bold mb-4">Додати відгук</h1>
+        <form method="POST">
+            <div class="mb-4">
+                <label for="book_id" class="block text-gray-700">Оберіть книгу</label>
+                <select id="book_id" name="book_id" class="w-full p-2 border border-gray-300 rounded" required>
+                    {% for book in books %}
+                        <option value="{{ book._id }}">{{ book.title }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-4">
+                <label for="review_text" class="block text-gray-700">Відгук</label>
+                <textarea id="review_text" name="review_text" class="w-full p-2 border border-gray-300 rounded" required></textarea>
+            </div>
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Додати відгук</button>
+        </form>
+    </div>
+{% endblock %}
